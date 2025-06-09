@@ -78,13 +78,13 @@ const Todo = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex flex-col items-center py-8 px-2">
-      <div className="w-full bg-white rounded-none sm:rounded-2xl shadow-xl p-4 sm:p-8 mt-0 sm:mt-8 max-w-full sm:max-w-xl">
+    <div className="h-full w-full flex flex-col items-center py-8 px-2">
+      <div className="w-full glass-card sm:p-8 mt-0 sm:mt-8 max-w-full sm:max-w-xl">
         <h1 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-8">📝 To-Do List</h1>
 
         <div className="flex justify-end mb-6">
           <button
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition text-sm sm:text-base"
+            className="flex items-center gap-2 px-4 py-2 bg-slate-800 text-white font-semibold rounded-lg shadow-md hover:bg-slate-700 transition text-sm sm:text-base cursor-pointer"
             onClick={() => {
               setTaskInput('');
               setEditingTodo(null);
@@ -96,23 +96,23 @@ const Todo = () => {
           </button>
         </div>
 
-        <ul className="space-y-4 max-h-[60vh] overflow-y-auto scrollbar-none pr-2">
+        <ul className="space-y-4 max-h-[50vh] overflow-y-auto pr-2">
           {todos.map(todo => (
             <li
               key={todo._id}
-              className="flex flex-col sm:flex-row sm:items-center justify-between bg-gray-50 rounded-lg px-4 py-3 shadow-sm"
+              className="flex flex-col sm:flex-row sm:items-center justify-between bg-slate-100/40 cursor-pointer rounded-md px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out"
             >
               <span className="text-gray-900 text-base sm:text-lg break-words">{todo.task}</span>
               <div className="flex mt-2 sm:mt-0 space-x-2">
                 <button
-                  className="p-2 bg-yellow-400 text-white rounded hover:bg-yellow-500 transition font-medium flex items-center justify-center"
+                  className="p-2 bg-yellow-800 text-white rounded hover:bg-yellow-900 cursor-pointer transition font-medium flex items-center justify-center"
                   aria-label="Edit"
                   onClick={() => handleEdit(todo)}
                 >
                   <FiEdit2 className="text-lg" />
                 </button>
                 <button
-                  className="p-2 bg-red-500 text-white rounded hover:bg-red-600 transition font-medium flex items-center justify-center"
+                  className="p-2 bg-red-800 text-white rounded hover:bg-red-900 transition cursor-pointer font-medium flex items-center justify-center"
                   aria-label="Delete"
                   onClick={() => handleDelete(todo._id)}
                 >
@@ -125,13 +125,13 @@ const Todo = () => {
       </div>
 
       {modalVisible && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-          <div className="bg-white rounded-xl shadow-2xl p-6 sm:p-8 w-full max-w-md mx-2">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="glass-card sm:p-8 w-full max-w-md mx-2">
             <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
               {editingTodo ? "Edit Task" : "Add Task"}
             </h2>
             <input
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition mb-2 text-base"
+              className="glass-input"
               placeholder="Enter task..."
               required={true}
               value={taskInput}
@@ -144,13 +144,13 @@ const Todo = () => {
             )}
             <div className="flex justify-end space-x-2 mt-4">
               <button
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold text-sm sm:text-base"
+                className="px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 cursor-pointer transition font-semibold text-sm sm:text-base"
                 onClick={() => { taskInput ? handleSave() : setShowInputError(true) }}
               >
                 Save
               </button>
               <button
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition font-semibold text-sm sm:text-base"
+                className="px-4 py-2 bg-slate-300 text-gray-700 rounded-lg hover:bg-slate-400 cursor-pointer transition font-semibold text-sm sm:text-base"
                 onClick={() => setModalVisible(false)}
               >
                 Cancel

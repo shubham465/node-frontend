@@ -51,8 +51,8 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+    <div className="h-full flex items-center justify-center ">
+      <div className="w-full max-w-md glass-card">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Register</h1>
         <div className="space-y-6">
           <div>
@@ -61,7 +61,7 @@ const Register = () => {
               placeholder="Enter Username"
               value={username}
               onChange={(e) => handleChange(e, setUsername, 'username')}
-              className={`w-full px-4 py-3 border ${errors.username ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition`}
+              className={`glass-input ${errors.username ? 'border-red-500' : 'border-gray-300'}`}
             />
             {errors.username && (
               <p className="text-red-500 text-sm mt-1">{errors.username}</p>
@@ -73,7 +73,7 @@ const Register = () => {
               placeholder="Enter Email"
               value={email}
               onChange={(e) => handleChange(e, setEmail, 'email')}
-              className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition`}
+              className={`glass-input ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -85,7 +85,7 @@ const Register = () => {
               placeholder="Enter Password"
               value={password}
               onChange={(e) => handleChange(e, setPassword, 'password')}
-              className={`w-full px-4 py-3 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition`}
+              className={`glass-input ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
             />
             {errors.password && (
               <p className="text-red-500 text-sm mt-1">{errors.password}</p>
@@ -96,14 +96,14 @@ const Register = () => {
           )}
           <button
             onClick={handleRegister}
-            className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
+            className="w-full py-3 bg-slate-800 text-white font-semibold rounded-lg shadow-md hover:bg-slate-800/95 cursor-pointer transition"
           >
             Register
           </button>
         </div>
         <p className="mt-6 text-center text-gray-600">
           Already have an account?{' '}
-          <Link to="/user/login" className="text-blue-600 hover:underline font-medium">
+          <Link to="/user/login" className="text-slate-900 hover:underline font-medium">
             Go to Login
           </Link>
         </p>

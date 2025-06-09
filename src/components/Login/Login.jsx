@@ -36,7 +36,7 @@ const Login = () => {
         password
       });
       localStorage.setItem("token", JSON.stringify(response.data.accessToken));
-      navigate('/dashboard/todo'); 
+      navigate('/dashboard/todo');
     } catch (error) {
       setErrors((prev) => ({
         ...prev,
@@ -46,9 +46,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Login</h1>
+    <div className="flex items-center justify-center h-full">
+      <div className="max-w-md glass-card">
+        <h1 className="text-3xl font-bold text-center text-slate-700 mb-8">Login</h1>
         <div className="space-y-6">
           <div>
             <input
@@ -56,10 +56,10 @@ const Login = () => {
               placeholder="Enter Email"
               value={email}
               onChange={(e) => handleChange(e, setEmail, 'email')}
-              className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition`}
+              className={`glass-input ${errors.email ? 'border border-red-500' : 'border border-white/20'}`}
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              <p className="text-red-400 text-bold text-md mt-1">{errors.email}</p>
             )}
           </div>
           <div>
@@ -68,25 +68,25 @@ const Login = () => {
               placeholder="Enter Password"
               value={password}
               onChange={(e) => handleChange(e, setPassword, 'password')}
-              className={`w-full px-4 py-3 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition`}
+              className={`glass-input ${errors.password ? 'border border-red-500' : 'border border-white/20'}`}
             />
             {errors.password && (
-              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+              <p className="text-red-400 text-bold text-md mt-1">{errors.password}</p>
             )}
           </div>
           {errors.general && (
-            <div className="text-red-600 text-center text-sm">{errors.general}</div>
+            <div className="text-red-400 text-bold text-center text-md">{errors.general}</div>
           )}
           <button
             onClick={handleLogin}
-            className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
+            className="w-full py-3 bg-slate-800 text-white font-semibold rounded-lg shadow-md hover:bg-slate-800/95 transition cursor-pointer"
           >
             Login
           </button>
         </div>
-        <p className="mt-6 text-center text-gray-600">
+        <p className="mt-6 text-center">
           Don't have an account?{' '}
-          <Link to="/user/register" className="text-blue-600 hover:underline font-medium">
+          <Link to="/user/register" className="text-slate-900 hover:underline font-medium">
             Go to Register
           </Link>
         </p>

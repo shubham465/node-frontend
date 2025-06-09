@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+@layer components {
+  .glass-card {
+    @apply w-full p-8 bg-white/2 shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] backdrop-blur-lg rounded-md border border-white/10;
+  }
+
+  .glass-container {
+    @apply w-full text-slate-800 bg-white/2 shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] backdrop-blur-lg border border-white/10;
+  }
+
+  .glass-input {
+    @apply w-full px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm text-slate-700 placeholder-slate-700/60 
+           focus:outline-none focus:ring-2 focus:ring-slate-600 transition ring-1 border-black;
+  }
+}
+
+
+
+
+* {
+    box-sizing: border-box;
+    scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
