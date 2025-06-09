@@ -1,5 +1,6 @@
-import React from 'react';
 import { Link, useNavigate, Outlet } from 'react-router-dom';
+
+import Hero from '../assets/hero2.jpg';
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-cover bg-center" style={{ backgroundImage: "url('/src/assets/hero2.jpg')" }}>
+    <div className="h-screen flex flex-col bg-cover bg-center" style={{ backgroundImage: `url(${Hero})` }}>
       <header className="w-full sticky top-0 z-30 py-4 px-6 flex items-center justify-between glass-container">
         <Link to="/" className="text-2xl font-bold">TaskNest</Link>
         <nav className="flex items-center gap-4">
