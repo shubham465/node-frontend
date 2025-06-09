@@ -14,7 +14,8 @@ const Register = () => {
     setErrors((prev) => ({ ...prev, [field]: '', general: '' }));
   };
 
-  const handleRegister = async () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
     let hasError = false;
     let newErrors = { username: '', email: '', password: '', general: '' };
 
@@ -54,53 +55,55 @@ const Register = () => {
     <div className="h-full flex items-center justify-center ">
       <div className="w-full max-w-md glass-card">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Register</h1>
-        <div className="space-y-6">
-          <div>
-            <input
-              type="text"
-              placeholder="Enter Username"
-              value={username}
-              onChange={(e) => handleChange(e, setUsername, 'username')}
-              className={`glass-input ${errors.username ? 'border-red-500' : 'border-gray-300'}`}
-            />
-            {errors.username && (
-              <p className="text-red-500 text-sm mt-1">{errors.username}</p>
+        <form onSubmit={handleRegister}>
+          <div className="space-y-6">
+            <div>
+              <input
+                type="text"
+                placeholder="Enter Username"
+                value={username}
+                onChange={(e) => handleChange(e, setUsername, 'username')}
+                className={`glass-input ${errors.username ? 'border-red-500' : 'border-gray-300'}`}
+              />
+              {errors.username && (
+                <p className="text-red-500 text-sm mt-1">{errors.username}</p>
+              )}
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => handleChange(e, setEmail, 'email')}
+                className={`glass-input ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => handleChange(e, setPassword, 'password')}
+                className={`glass-input ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+              )}
+            </div>
+            {errors.general && (
+              <div className="text-red-600 text-center text-sm">{errors.general}</div>
             )}
+            <button
+              onClick={handleRegister}
+              className="w-full py-3 bg-slate-800 text-white font-semibold rounded-lg shadow-md hover:bg-slate-800/95 cursor-pointer transition"
+            >
+              Register
+            </button>
           </div>
-          <div>
-            <input
-              type="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={(e) => handleChange(e, setEmail, 'email')}
-              className={`glass-input ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-            )}
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => handleChange(e, setPassword, 'password')}
-              className={`glass-input ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
-            />
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
-            )}
-          </div>
-          {errors.general && (
-            <div className="text-red-600 text-center text-sm">{errors.general}</div>
-          )}
-          <button
-            onClick={handleRegister}
-            className="w-full py-3 bg-slate-800 text-white font-semibold rounded-lg shadow-md hover:bg-slate-800/95 cursor-pointer transition"
-          >
-            Register
-          </button>
-        </div>
+        </form>
         <p className="mt-6 text-center text-gray-600">
           Already have an account?{' '}
           <Link to="/user/login" className="text-slate-900 hover:underline font-medium">

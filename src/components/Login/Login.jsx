@@ -13,7 +13,8 @@ const Login = () => {
     setErrors((prev) => ({ ...prev, [field]: '', general: '' }));
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     let hasError = false;
     let newErrors = { email: '', password: '', general: '' };
 
@@ -49,41 +50,44 @@ const Login = () => {
     <div className="flex items-center justify-center h-full">
       <div className="max-w-md glass-card">
         <h1 className="text-3xl font-bold text-center text-slate-700 mb-8">Login</h1>
-        <div className="space-y-6">
-          <div>
-            <input
-              type="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={(e) => handleChange(e, setEmail, 'email')}
-              className={`glass-input ${errors.email ? 'border border-red-500' : 'border border-white/20'}`}
-            />
-            {errors.email && (
-              <p className="text-red-400 text-bold text-md mt-1">{errors.email}</p>
+        <form onSubmit={handleLogin}>
+          <div className="space-y-6">
+            <div>
+              <input
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => handleChange(e, setEmail, 'email')}
+                className={`glass-input ${errors.email ? 'border border-red-500' : 'border border-white/20'}`}
+              />
+              {errors.email && (
+                <p className="text-red-400 text-bold text-md mt-1">{errors.email}</p>
+              )}
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => handleChange(e, setPassword, 'password')}
+                className={`glass-input ${errors.password ? 'border border-red-500' : 'border border-white/20'}`}
+              />
+              {errors.password && (
+                <p className="text-red-400 text-bold text-md mt-1">{errors.password}</p>
+              )}
+            </div>
+            {errors.general && (
+              <div className="text-red-400 text-bold text-center text-md">{errors.general}</div>
             )}
+            <button
+              type='submit'
+              onClick={handleLogin}
+              className="w-full py-3 bg-slate-800 text-white font-semibold rounded-lg shadow-md hover:bg-slate-800/95 transition cursor-pointer"
+            >
+              Login
+            </button>
           </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => handleChange(e, setPassword, 'password')}
-              className={`glass-input ${errors.password ? 'border border-red-500' : 'border border-white/20'}`}
-            />
-            {errors.password && (
-              <p className="text-red-400 text-bold text-md mt-1">{errors.password}</p>
-            )}
-          </div>
-          {errors.general && (
-            <div className="text-red-400 text-bold text-center text-md">{errors.general}</div>
-          )}
-          <button
-            onClick={handleLogin}
-            className="w-full py-3 bg-slate-800 text-white font-semibold rounded-lg shadow-md hover:bg-slate-800/95 transition cursor-pointer"
-          >
-            Login
-          </button>
-        </div>
+        </form>
         <p className="mt-6 text-center">
           Don't have an account?{' '}
           <Link to="/user/register" className="text-slate-900 hover:underline font-medium">

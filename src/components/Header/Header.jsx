@@ -11,7 +11,7 @@ const Header = () => {
 
 	return (
 		<header className="w-full sticky top-0 z-30 py-4 px-6 flex items-center justify-between glass-container">
-			<Link to="/" className="text-2xl font-bold">TaskNest</Link>
+			<Link to="/" className="text-2xl font-custom font-black bg-gradient-to-r from-indigo-400 to-pink-300 bg-clip-text text-transparent">TaskNest.</Link>
 			<nav className="flex items-center gap-4">
 				{!token ? (
 					<>
@@ -21,7 +21,7 @@ const Header = () => {
 				) : (
 					<button
 						onClick={handleLogout}
-						className="text-slate-500 hover:underline font-medium bg-transparent border-none cursor-pointer"
+						className="text-white bg-indigo-400/80 hover:bg-indigo-500 p-2 rounded-md cursor-pointer"
 					>
 						Logout
 					</button>
