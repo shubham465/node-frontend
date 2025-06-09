@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Snackbar from './Snackbar/Snackbar.jsx';
+import Snackbar from './components/Snackbar/Snackbar.jsx';
 import "./Todo.css";
 import axios from 'axios';
 

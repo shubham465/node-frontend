@@ -1,12 +1,10 @@
+import axios from 'axios';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App.jsx';
-import Login from './Login.jsx';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Todo from './Todo.jsx'
-import axios from 'axios';
+import { HashRouter as Router} from 'react-router-dom';
 
+import App from './App.jsx';
+import './index.css';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:5001/api';
 
@@ -25,12 +23,7 @@ axios.interceptors.request.use(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/user/login" element={<Login />} />
-        <Route path="/dashboard/todo" element={<Todo />} />
-        <Route path="/dashboard/todo/*" element={<Todo />} />
-      </Routes>
+      <App />
     </Router>
   </StrictMode>
 );
